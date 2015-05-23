@@ -63,6 +63,9 @@ const volatile mainTable VETableMainFlashV FUELTABLESD = {
 #elif CONFIG == SNOTROCKET_ID
 	RPMLength:  12,
 	LoadLength: 8,
+#elif CONFIG == JOHNSAE86_ID
+	RPMLength:  17,
+	LoadLength: 19,
 #else
 	RPMLength:  16,
 	LoadLength: 16,
@@ -90,6 +93,8 @@ const volatile mainTable VETableMainFlashV FUELTABLESD = {
 #include "../data/tables/axis/ScavengersMiata-RPM.h"
 #elif CONFIG == SNOTROCKET_ID
 #include "../data/tables/axis/SimsVolvo-RPM.h"
+#elif CONFIG == JOHNSAE86_ID
+#include "../data/tables/axis/JohnsAE86-RPM.h"
 #elif CONFIG == DEFAULT_ID
 #include "../data/tables/axis/DefaultWith400Spacing-RPM.h"
 #else
@@ -119,6 +124,8 @@ const volatile mainTable VETableMainFlashV FUELTABLESD = {
 #include "../data/tables/axis/ScavengersMiata-Load.h"
 #elif CONFIG == SNOTROCKET_ID
 #include "../data/tables/axis/SimsVolvo-Load.h"
+#elif CONFIG == JOHNSAE86_ID
+#include "../data/tables/axis/JohnsAE86-KPALoad.h"
 #elif CONFIG == DEFAULT_ID
 #include "../data/tables/axis/DefaultWith10and20SplitSpacing-Load.h"
 #else
@@ -148,6 +155,8 @@ const volatile mainTable VETableMainFlashV FUELTABLESD = {
 #include "../data/tables/ve/ScavengerVE24RPMx19Load.h"
 #elif CONFIG == SNOTROCKET_ID
 #include "../data/tables/ve/SimsVolvoVE.h"
+#elif CONFIG == JOHNSAE86_ID
+#include "../data/tables/ve/JohnsAE86-Load.h"
 #elif CONFIG == DEFAULT_ID
 #include "../data/tables/ve/DefaultVE24RPMx19Load.h"
 #else
@@ -173,16 +182,33 @@ const volatile mainTable VETableSecondaryFlashV FUELTABLESD = {
 
 
 const volatile mainTable AirflowTableFlashV FUELTABLESD = {
+#if CONFIG == JOHNSAE86_ID
+	RPMLength:  17,
+	LoadLength: 19,
+#else
 	RPMLength:  MAINTABLE_RPM_LENGTH,
 	LoadLength: MAINTABLE_LOAD_LENGTH,
+#endif
 	RPM:{
+#if CONFIG == JOHNSAE86_ID
+		#include "../data/tables/axis/JohnsAE86-RPM.h"
+#else
 		#include "../data/tables/axis/DefaultWith400Spacing-RPM.h"
+#endif
 	},
 	Load:{
+#if CONFIG == JOHNSAE86_ID
+		#include "../data/tables/axis/JohnsAE86-KPALoad.h"
+#else
 		#include "../data/tables/axis/DefaultForAlphaN-Load.h"
+#endif
 	},
 	Table:{
+#if CONFIG == JOHNSAE86_ID
+		#include "../data/tables/airflow/JohnsAE86-Airflow.h"
+#else
 		#include "../data/tables/airflow/flat15PercentAirflow.h"
+#endif
 	}
 };
 
@@ -197,6 +223,9 @@ const volatile mainTable LambdaTableFlashV FUELTABLESD = {
 #elif CONFIG == SNOTROCKET_ID
 	RPMLength:  12,
 	LoadLength: 8,
+#elif CONFIG == JOHNSAE86_ID
+	RPMLength:  17,
+	LoadLength: 19,
 #else
 	RPMLength:  16,
 	LoadLength: 16,
@@ -216,6 +245,8 @@ const volatile mainTable LambdaTableFlashV FUELTABLESD = {
 #include "../data/tables/axis/Deuces3100-RPM.h"
 #elif CONFIG == SNOTROCKET_ID
 #include "../data/tables/axis/SimsVolvo-RPM.h"
+#elif CONFIG == JOHNSAE86_ID
+#include "../data/tables/axis/JohnsAE86-RPM.h"
 #else
 #include "../data/tables/axis/FredsTruck-RPM.h"
 #endif
@@ -233,6 +264,8 @@ const volatile mainTable LambdaTableFlashV FUELTABLESD = {
 #include "../data/tables/axis/Deuces3100-Load.h"
 #elif CONFIG == SNOTROCKET_ID
 #include "../data/tables/axis/SimsVolvo-Load.h"
+#elif CONFIG == JOHNSAE86_ID
+#include "../data/tables/axis/JohnsAE86-KPALoad.h"
 #else
 #include "../data/tables/axis/FredsTruck-Load.h"
 #endif
@@ -250,6 +283,8 @@ const volatile mainTable LambdaTableFlashV FUELTABLESD = {
 #include "../data/tables/lambda/DeucesS10Lambda.h"
 #elif CONFIG == SNOTROCKET_ID
 #include "../data/tables/lambda/SimsVolvoLambda.h"
+#elif CONFIG == JOHNSAE86_ID
+#include "../data/tables/lambda/JohnsAE86-AFR.h"
 #else
 #include "../data/tables/lambda/GenericLambda.h" // Reasonable starting point
 #endif

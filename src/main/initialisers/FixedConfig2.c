@@ -133,6 +133,9 @@ const volatile fixedConfig2 fixedConfigs2 FIXEDCONF2 = {
 #elif CONFIG == SNOTROCKET_ID
 		TPSMinimumADC: 185,
 		TPSMaximumADC: 809
+#elif CONFIG == JOHNSAE86_ID
+		TPSMinimumADC: 94,
+		TPSMaximumADC: 825
 #else // Default for a normal TPS slope
 		TPSMinimumADC: 0,
 		TPSMaximumADC: ADC_MAX_VALUE
@@ -145,7 +148,11 @@ const volatile fixedConfig2 fixedConfigs2 FIXEDCONF2 = {
 	},
 	algorithmSettings:{
 		loadType:      LOAD_MAP,
+#if CONFIG == JOHNSAE86_ID
+		algorithmType: ALGO_SD_AN_BLEND,
+#else
 		algorithmType: ALGO_SPEED_DENSITY,
+#endif
 #if CONFIG == DEUCECOUPE_ID
 		dwellType:     DWELL_RPM,
 #elif CONFIG == DEUCES10_ID
@@ -224,7 +231,11 @@ const volatile fixedConfig2 fixedConfigs2 FIXEDCONF2 = {
 		PortDirectionT: 0xFF  // Ignored! TODO: Overridden for precision timed outputs
 	},
 	decoderSettings:{
+#if CONFIG == JOHNSAE86_ID
+		syncConfirmationsRunning: 1,
+#else
 		syncConfirmationsRunning: 10, // This number is arbitrary, add an if block and configure to taste.
+#endif
 		syncConfirmationsStarting: 0, // Most users should leave this zero, however having it set to 1 or 2 could be beneficial
 #if CONFIG == HOTEL_ID
 		accelerationInputEventTimeTolerance: ACCEL_TIME_TOL(120), // once started this needs a lot less... fix
@@ -233,6 +244,9 @@ const volatile fixedConfig2 fixedConfigs2 FIXEDCONF2 = {
 		accelerationInputEventTimeTolerance: ACCEL_TIME_TOL(100),
 		decelerationInputEventTimeTolerance: DECEL_TIME_TOL(100),
 #elif CONFIG == SCAVENGER_ID
+		accelerationInputEventTimeTolerance: ACCEL_TIME_TOL(100),
+		decelerationInputEventTimeTolerance: DECEL_TIME_TOL(100),
+#elif CONFIG == JOHNSAE86_ID
 		accelerationInputEventTimeTolerance: ACCEL_TIME_TOL(100),
 		decelerationInputEventTimeTolerance: DECEL_TIME_TOL(100),
 #else

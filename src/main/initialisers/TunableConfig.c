@@ -76,7 +76,9 @@ const volatile SmallTables1 SmallTablesAFlashV  TUNETABLESDV1 = {
 #elif CONFIG == SCAVENGER_ID
 			Axis:   ARRAY_OF_16_VOLTAGES,
 			Values: { T(7.90),  T(7.90),  T(7.90),  T(7.90),  T(7.90),  T(7.35),  T(6.95),  T(6.50),  T(6.15),  T(5.75),  T(5.48),  T(5.20),  T(4.95),  T(3.80),  T(2.85),  T(2.00)}
-
+#elif CONFIG == JOHNSAE86_ID
+			Axis:   ARRAY_OF_16_VOLTAGES,
+			Values: { T(14.0),  T(10.0),   T(7.0),   T(6.0),   T(5.0),   T(4.5),   T(4.0),   T(3.6),   T(3.3),   T(3.0),   T(2.8),   T(2.6),   T(2.4),   T(1.8),   T(1.4),   T(1.0)}
 #else
 			Axis:   ARRAY_OF_16_VOLTAGES,
 			Values: ARRAY_OF_16_DWELLS
@@ -138,7 +140,11 @@ const volatile SmallTables1 SmallTablesAFlashV  TUNETABLESDV1 = {
 		},
 		blendVersusRPMTable: {
 			Axis:   ARRAY_OF_16_RPMS,
+#if CONFIG == JOHNSAE86_ID
+			Values:{  LR(0.0),  LR(0.0),  LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0)}
+#else
 			Values: ARRAY_OF_16_BLENDS
+#endif
 		},
 		filler: {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

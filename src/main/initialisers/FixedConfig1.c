@@ -76,6 +76,9 @@ const volatile fixedConfig1 fixedConfigs1 FIXEDCONF1 = {
 #elif CONFIG == SCAVENGER_ID
 		perCylinderVolume:  CYLINDER_VOLUME(399.25),
 		injectorFlow:       CC_PER_MINUTE(540),
+#elif CONFIG == JOHNSAE86_ID
+		perCylinderVolume:  CYLINDER_VOLUME(400),
+		injectorFlow:       CC_PER_MINUTE(365),
 #else
 		perCylinderVolume:  CYLINDER_VOLUME(500),
 		injectorFlow:       CC_PER_MINUTE(550),
@@ -199,6 +202,14 @@ const volatile fixedConfig1 fixedConfigs1 FIXEDCONF1 = {
 		numberOfConfiguredOutputEvents:              8, // See two lines above
 		numberOfInjectionsPerEngineCycle:            2  // Semi-sequential, for now.
 
+#elif CONFIG == JOHNSAE86_ID
+		anglesOfTDC:  {ANGLE(0), ANGLE(90)},
+		outputEventPinNumbers:        {0,2},
+		schedulingConfigurationBits:  {0,1},
+		decoderEngineOffset:       ANGLE(148),
+		numberOfConfiguredOutputEvents:   2,
+		numberOfInjectionsPerEngineCycle: 4
+
 #else // Nothing scheduled by default, no sensible default for all possible vehicle setups.
 		anglesOfTDC:                            {}, // Depends on cylinder count and other variables
 		outputEventPinNumbers:       {0,1,2,3,4,5}, // Default to a variety of pins for testing purposes. Note: Won't do anything without
@@ -222,6 +233,9 @@ const volatile fixedConfig1 fixedConfigs1 FIXEDCONF1 = {
 #elif CONFIG == SCAVENGER_ID
 			disableThreshold:  RPM(7200),
 			reenableThreshold: RPM(7150)
+#elif CONFIG == JOHNSAE86_ID
+			disableThreshold:  RPM(7800),
+			reenableThreshold: RPM(7700)
 #else
 			disableThreshold:  RPM(5850),
 			reenableThreshold: RPM(5800)  // Come back on before ignition does
@@ -249,6 +263,9 @@ const volatile fixedConfig1 fixedConfigs1 FIXEDCONF1 = {
 #elif CONFIG == SCAVENGER_ID
 			disableThreshold:  RPM(7200),
 			reenableThreshold: RPM(7100)
+#elif CONFIG == JOHNSAE86_ID
+			disableThreshold:  RPM(7800),
+			reenableThreshold: RPM(7750)
 #else
 			disableThreshold:  RPM(5800),
 			reenableThreshold: RPM(5750)  // Come back on after injection does
