@@ -252,7 +252,7 @@ const volatile fixedConfig2 fixedConfigs2 FIXEDCONF2 = {
 			" is probably best if you keep the information stored here purely "
 			"related to the vehicle that this system is installed on and relevant "
 			"to the state of tune and configuration of settings. Lastly, please "
-			"remember that this field WILL be shrinking in length from it's "
+			"remember that this field WILL be shrinking in length from its "
 			"currently large size to something more reasonable in future. I would "
 			"like to attempt to keep it at least thirty two characters lon"
 };
