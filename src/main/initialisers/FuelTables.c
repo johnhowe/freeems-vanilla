@@ -198,7 +198,7 @@ const volatile mainTable AirflowTableFlashV FUELTABLESD = {
 	},
 	Load:{
 #if CONFIG == JOHNSAE86_ID
-		#include "../data/tables/axis/JohnsAE86-KPALoad.h"
+		#include "../data/tables/axis/JohnsAE86-TPSLoad.h"
 #else
 		#include "../data/tables/axis/DefaultForAlphaN-Load.h"
 #endif
