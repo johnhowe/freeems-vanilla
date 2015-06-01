@@ -141,7 +141,7 @@ const volatile SmallTables1 SmallTablesAFlashV  TUNETABLESDV1 = {
 		blendVersusRPMTable: {
 			Axis:   ARRAY_OF_16_RPMS,
 #if CONFIG == JOHNSAE86_ID
-			Values:{  LR(0.0),  LR(0.0),  LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0),   LR(0.0)}
+			Values:{  SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX, SHORTMAX}
 #else
 			Values: ARRAY_OF_16_BLENDS
 #endif
